@@ -1,0 +1,97 @@
+```css
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333;
+    --primary-color: #0077b6;
+    --card-color: #f4f4f4;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f4f4f4;
+    --primary-color: #4dabf7;
+    --card-color: #1e1e1e;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    background-color: var(--card-color);
+}
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 5%;
+    gap: 2rem;
+}
+
+.hero img {
+    width: 250px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content h2 {
+    color: var(--primary-color);
+}
+
+section {
+    padding: 3rem 5%;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.skill-card {
+    background-color: var(--card-color);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+}
+```
