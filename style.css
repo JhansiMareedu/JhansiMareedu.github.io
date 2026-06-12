@@ -247,7 +247,7 @@ footer {
     flex-direction: column;
     gap: 15px;
 
-    min-height: 250px;
+    min-height: 220px;
 }
 
 .project-card:hover {
@@ -345,7 +345,7 @@ footer {
 
 .connect-section {
     text-align: center;
-    padding: 40px 8%;
+    padding: 30px 8%;
 }
 
 .connect-section h2 {
