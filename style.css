@@ -374,3 +374,23 @@ footer {
 .connect-buttons a {
     min-width: 170px;
 }
+@media (max-width: 768px) {
+
+    .connect-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .connect-section p {
+        font-size: 0.95rem;
+    }
+
+    .connect-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .connect-buttons a {
+        width: 100%;
+        max-width: 280px;
+    }
+}
