@@ -214,7 +214,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .project-card {
@@ -224,7 +224,10 @@ footer {
     padding: 25px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .project-card:hover {
