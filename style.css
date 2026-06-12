@@ -154,6 +154,25 @@ footer {
     .hero-content h1 {
         font-size: 2.2rem;
     }
+
+    .connect-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .connect-section p {
+        font-size: 1rem;
+    }
+
+    .connect-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .connect-buttons a {
+        width: 100%;
+        max-width: 300px;
+    }
+}
 }
 .action-buttons {
     display: flex;
