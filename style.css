@@ -325,3 +325,35 @@ footer {
         font-size: 1.5rem;
     }
 }
+/* CONNECT SECTION */
+
+.connect-section {
+    text-align: center;
+    padding: 80px 8%;
+}
+
+.connect-section h2 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.connect-section p {
+    max-width: 900px;
+    margin: auto;
+    color: #cbd5e1;
+    font-size: 1.4rem;
+    line-height: 1.8;
+}
+
+.connect-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.connect-buttons a {
+    min-width: 200px;
+}
