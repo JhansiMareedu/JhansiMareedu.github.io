@@ -393,3 +393,22 @@ footer {
         max-width: 280px;
     }
 }
+.cert-list {
+    padding-left: 20px;
+    color: #d1d5db;
+}
+
+.cert-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.cert-list a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cert-list a:hover {
+    color: #38bdf8;
+}
