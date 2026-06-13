@@ -1,299 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jhansi Laxmi Mareedu | Cloud & DevOps Engineer</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cloud & DevOps Engineer portfolio of Jhansi Laxmi Mareedu - AWS, Kubernetes, Terraform, CI/CD, and DevOps best practices." />
+  <title>Jhansi Laxmi Mareedu | Cloud & DevOps Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f1a;
+      --bg2: #111827;
+      --bg3: #1a2235;
+      --accent: #38bdf8;
+      --accent2: #6366f1;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e2d45;
+      --card: #141e2e;
+      --radius: 12px;
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(11, 15, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+      gap: 4rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.05em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero-text h1 span { color: var(--accent); }
+    .hero-tagline {
+      font-size: 1.1rem; color: var(--muted);
+      margin-bottom: 1.75rem; max-width: 520px;
+    }
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .pill {
+      padding: 0.3rem 0.85rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 0.75rem 1.75rem;
+      background: var(--accent);
+      color: #0b0f1a; font-weight: 700;
+      border-radius: var(--radius); text-decoration: none;
+      font-size: 0.9rem; transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost {
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--border);
+      color: var(--text); border-radius: var(--radius);
+      text-decoration: none; font-size: 0.9rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-photo {
+      flex-shrink: 0;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      padding: 4px;
+      box-shadow: 0 0 60px rgba(56,189,248,0.15);
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg2);
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: center; gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 800;
+      color: var(--accent);
+    }
+    .stat span { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── SECTION LAYOUT ── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700; margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      padding: 0.35rem 0.9rem;
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 100px;
+      font-size: 0.8rem; color: var(--accent);
+    }
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .about-card-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .about-card-row:last-child { border-bottom: none; }
+    .about-card-row span:first-child { color: var(--muted); }
+    .about-card-row span:last-child { font-weight: 600; color: var(--accent); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); max-width: 100%; padding: 5rem 2rem; }
+    #skills .inner { max-width: 1100px; margin: 0 auto; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    .skill-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+    }
+    .project-card p { color: var(--muted); font-size: 0.9rem; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag {
+      padding: 0.25rem 0.7rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.75rem; color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg2); max-width: 100%; padding: 5rem 2rem; }
+    #experience .inner { max-width: 1100px; margin: 0 auto; }
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.25s;
+    }
+    .exp-card:hover { border-left-color: var(--accent2); }
+    .exp-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .exp-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 700;
+    }
+    .exp-meta { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-align: right; }
+    .exp-card ul { list-style: none; padding: 0; }
+    .exp-card ul li {
+      padding: 0.3rem 0;
+      color: var(--muted); font-size: 0.9rem;
+      padding-left: 1.2rem; position: relative;
+    }
+    .exp-card ul li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--accent); font-size: 0.75rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .edu-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .edu-card p { color: var(--muted); font-size: 0.85rem; }
+    .edu-card .year {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      background: rgba(56,189,248,0.1);
+      border-radius: 100px;
+      font-size: 0.75rem; color: var(--accent); font-weight: 600;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact p { color: var(--muted); max-width: 500px; margin: 0 auto 2rem; }
+    .contact-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1rem; }
+      .nav-links { gap: 1rem; }
+      #home { flex-direction: column-reverse; padding: 5rem 1rem 3rem; gap: 2rem; }
+      .hero-photo { width: 180px; height: 180px; align-self: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .stats-inner { gap: 2rem; }
+    }
+  </style>
 </head>
 <body>
-<header>
-<h2>Jhansi Laxmi Mareedu</h2>
-<button class="toggle-btn" onclick="toggleTheme()">🌙/☀️</button>
-</header>
 
-<section class="hero">
-<img src="profile.jpg" alt="Jhansi Profile">
-<div class="hero-content">
-<h1>Jhansi Laxmi Mareedu</h1>
-<h2>Cloud & DevOps Engineer | AWS • Kubernetes • Terraform • CI/CD</h2>
- <p>DevOps and Cloud Engineer with 5+ years of experience specializing in CI/CD Automation, Infrastructure as Code, Kubernetes, AWS, Azure, and DevOps best practices.</p>
-  <div class="action-buttons">
-    <a href="#projects" class="primary-btn">View Projects</a>
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Jhansi Mareedu</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <a href="Jhansi_Resume.pdf" download class="secondary-btn">
-        Download Resume
-    </a>
-
-    <a href="https://www.linkedin.com/in/jhansi-laxmi-80536528a/"
-       target="_blank" class="social-btn">
-       LinkedIn
-    </a>
-
-    <a href="https://github.com/JhansiMareedu"
-       target="_blank" class="social-btn">
-       GitHub
-    </a>
-</div>
-
-<div class="tags">
-    <span>📍 Montgomery, Alabama, USA</span>
-    <span>AWS • Azure • Kubernetes</span>
-    <span>Terraform • Jenkins • GitHub Actions</span>
-</div>
-</div>
-</section>
-
-  <section id="about">
-<h2>About Me</h2>
-
-<p>
-DevOps and Cloud Engineer with 5+ years of experience specializing in cloud infrastructure, CI/CD automation, Infrastructure as Code (Terraform), container orchestration with Kubernetes, and DevOps best practices across banking and insurance domains.
-
-Passionate about building scalable cloud solutions, automating deployments, improving system reliability, and continuously learning new technologies to deliver high-quality solutions.
-</p>
-
-</section>
-
-<section id="skills" class="skills-section">
-    <p class="section-subtitle">TOOLS & TECHNOLOGIES I USE</p>
-    <h2>Skills</h2>
-
-    <div class="skills-grid">
-
-        <div class="skill-card">
-            <h3>Cloud Platforms</h3>
-            <p>AWS, Azure, IAM, EC2, VPC, S3, Load Balancers, CloudWatch.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>DevOps & CI/CD</h3>
-            <p>Jenkins, GitHub Actions, CI/CD Pipelines, Maven, SonarQube.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Containers & Orchestration</h3>
-            <p>Docker, Kubernetes, Helm Charts, Container Deployment.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Infrastructure as Code</h3>
-            <p>Terraform, Infrastructure Automation, Configuration Management.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Scripting & Programming</h3>
-            <p>Python, Shell Scripting, Git, Linux Administration.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Monitoring & Collaboration</h3>
-            <p>CloudWatch, Troubleshooting, Agile, Team Collaboration.</p>
-        </div>
-
-    </div>
-</section>
-
-<section id="experience">
-    <h2>Experience</h2>
-
-    <div class="experience-card">
-        <div class="experience-left">
-            <h3>DevOps/Cloud Engineer – ServisFirst Bank</h3>
-            <p>Sep 2025 – Present • Alabama, USA</p>
-        </div>
-
-        <div class="experience-right">
-            <ul>
-                <li>Manage cloud infrastructure on AWS using Terraform and Infrastructure as Code practices.</li>
-
-                <li>Build and maintain CI/CD pipelines using Jenkins and GitHub Actions.</li>
-
-                <li>Deploy and monitor containerized applications on Kubernetes clusters.</li>
-
-                <li>Collaborate with development teams to automate deployment processes.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="experience-card">
-        <div class="experience-left">
-            <h3>Associate Consultant (DevOps Engineer) – Capgemini</h3>
-            <p>2021 – 2025 • India</p>
-        </div>
-
-        <div class="experience-right">
-            <ul>
-                <li>Implemented CI/CD pipelines to streamline application delivery.</li>
-
-                <li>Provisioned cloud resources using Terraform and AWS services.</li>
-
-                <li>Containerized applications using Docker and deployed them to Kubernetes.</li>
-
-                <li>Improved deployment efficiency and reduced manual intervention.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="experience-card">
-        <div class="experience-left">
-            <h3>Software Developer / QA Analyst – Canara HSBC OBC</h3>
-            <p>2019 – 2021 • India</p>
-        </div>
-
-        <div class="experience-right">
-            <ul>
-                <li>Developed and executed automated test cases using Selenium.</li>
-
-                <li>Performed functional and regression testing for banking applications.</li>
-
-                <li>Collaborated with developers to resolve software defects.</li>
-
-                <li>Improved software quality and release reliability.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="education-grid">
-
-        <div class="project-card">
-            <h3>AWS Infrastructure Automation</h3>
-
-            <p>
-                Provisioned AWS infrastructure using Terraform including
-                EC2, VPC, Security Groups, and IAM roles following
-                Infrastructure as Code best practices.
-            </p>
-
-            <div class="project-tags">
-                <span>AWS</span>
-                <span>Terraform</span>
-                <span>IaC</span>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>CI/CD Pipeline Automation</h3>
-
-            <p>
-                Designed and implemented CI/CD pipelines using Jenkins
-                and GitHub Actions to automate build, testing,
-                and deployment processes.
-            </p>
-
-            <div class="project-tags">
-                <span>Jenkins</span>
-                <span>GitHub Actions</span>
-                <span>CI/CD</span>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>Kubernetes Deployment</h3>
-
-            <p>
-                Containerized applications using Docker and deployed
-                them on Kubernetes clusters using Helm charts for
-                scalable application management.
-            </p>
-
-            <div class="project-tags">
-                <span>Docker</span>
-                <span>Kubernetes</span>
-                <span>Helm</span>
-            </div>
-        </div>
-
-    </div>
-</section>
-  
- <section id="education">
-    <p class="section-subtitle">ACADEMIC BACKGROUND</p>
-    <h2>Education & Certifications</h2>
-
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <h3>Master of Science — Management Information Systems</h3>
-
-            <p>
-                Auburn University at Montgomery (AUM), USA<br>
-                Montgomery, Alabama<br>
-                2025
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>Bachelor of Technology — Electronics and Communication Engineering</h3>
-
-            <p>
-                Jawaharlal Nehru Technological University Hyderabad, India<br>
-                2019
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>Certifications</h3>
-
-            <ul class="cert-list">
-                <li>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/FV3A7QOU4Q34"
-                       target="_blank">
-                        Google Data Analytics Capstone
-                    </a>
-                </li>
-
-                <li>
-                    <a href="https://www.udemy.com/certificate/UC-49dbe9e4-28e2-43e4-8c2f-6331273efcb2/"
-                       target="_blank">
-                        Selenium WebDriver with Java & TestNG Framework
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-</section>
-  
-<section class="connect-section">
-
-    <h2>Let's Connect</h2>
-
-    <p>
-        If you're looking for a Cloud & DevOps Engineer experienced in AWS, Kubernetes, CI/CD, and Infrastructure as Code, feel free to connect.
+<!-- HERO -->
+<div id="home">
+  <div class="hero-text">
+    <div class="hero-badge">Open to Cloud & DevOps Opportunities</div>
+    <h1>Cloud & DevOps Engineer<br><span>who builds reliable systems at scale.</span></h1>
+    <p class="hero-tagline">
+      I'm Jhansi Laxmi Mareedu, a Cloud & DevOps Engineer with 5+ years of experience across banking and insurance domains — specializing in AWS, Kubernetes, Terraform, and CI/CD automation.
     </p>
-
-    <div class="connect-buttons">
-
-        <a href="mailto:jhansilaxmi.se@gmail.com"
-           class="primary-btn">
-            Email Me
-        </a>
-
-        <a href="https://www.linkedin.com/in/jhansi-laxmi-80536528a/"
-           target="_blank"
-           class="secondary-btn">
-            LinkedIn
-        </a>
-
-        <a href="Jhansi_Resume.pdf"
-           download
-           class="secondary-btn">
-            Download Resume
-        </a>
-
+    <div class="hero-pills">
+      <span class="pill">Montgomery, Alabama, USA</span>
+      <span class="pill">AWS • Azure • Kubernetes</span>
+      <span class="pill">Terraform • CI/CD</span>
     </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="Jhansi_Resume.pdf" class="btn-ghost" download>Download Resume</a>
+      <a href="https://www.linkedin.com/in/jhansi-laxmi-80536528a/" class="btn-ghost" target="_blank">LinkedIn</a>
+      <a href="https://github.com/JhansiMareedu" class="btn-ghost" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="profile.jpg" alt="Jhansi Laxmi Mareedu" onerror="this.style.background='var(--bg3)'" />
+  </div>
+</div>
 
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat"><strong>5+</strong><span>Years Experience</span></div>
+    <div class="stat"><strong>AWS</strong><span>Primary Cloud</span></div>
+    <div class="stat"><strong>Remote / Hybrid</strong><span>Preferred</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">Quick summary</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Professional Summary</h3>
+      <p>DevOps and Cloud Engineer with 5+ years of experience specializing in cloud infrastructure, CI/CD automation, and Infrastructure as Code. I enjoy designing scalable, reliable systems and working closely with development teams to improve deployment speed and quality.</p>
+      <p>My background spans banking and insurance domains, where I've delivered automation-first solutions using AWS, Terraform, Kubernetes, Jenkins, and GitHub Actions.</p>
+      <div class="about-tags">
+        <span class="tag">Cloud Infrastructure</span>
+        <span class="tag">CI/CD Automation</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">IaC</span>
+        <span class="tag">DevOps Best Practices</span>
+      </div>
+    </div>
+    <div>
+      <div class="about-card">
+        <div class="about-card-row"><span>Status</span><span>Available for roles</span></div>
+        <div class="about-card-row"><span>Experience</span><span>5+ Years</span></div>
+        <div class="about-card-row"><span>Location</span><span>Montgomery, AL, USA</span></div>
+        <div class="about-card-row"><span>Work Mode</span><span>Remote / Hybrid</span></div>
+        <div class="about-card-row"><span>Primary Stack</span><span>AWS, K8s, Terraform</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg2);max-width:100%;padding:5rem 2rem;">
+  <div class="inner">
+    <div class="section-eyebrow">Tools & technologies I use</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Cloud Platforms</h3>
+        <p>AWS, Azure, IAM, EC2, VPC, S3, Load Balancers, CloudWatch.</p>
+      </div>
+      <div class="skill-card">
+        <h3>DevOps & CI/CD</h3>
+        <p>Jenkins, GitHub Actions, CI/CD Pipelines, Maven, SonarQube.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Containers & Orchestration</h3>
+        <p>Docker, Kubernetes, Helm Charts, Container Deployment.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Infrastructure as Code</h3>
+        <p>Terraform, Infrastructure Automation, Configuration Management.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Scripting & Programming</h3>
+        <p>Python, Shell Scripting, Git, Linux Administration.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Monitoring & Collaboration</h3>
+        <p>CloudWatch, Troubleshooting, Agile, Team Collaboration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow">Selected DevOps work</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>AWS Infrastructure Automation</h3>
+      <p>Provisioned AWS infrastructure using Terraform including EC2, VPC, Security Groups, and IAM roles following Infrastructure as Code best practices.</p>
+      <div class="project-tags">
+        <span class="project-tag">AWS</span>
+        <span class="project-tag">Terraform</span>
+        <span class="project-tag">IaC</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>CI/CD Pipeline Automation</h3>
+      <p>Designed and implemented CI/CD pipelines using Jenkins and GitHub Actions to automate build, testing, and deployment processes end-to-end.</p>
+      <div class="project-tags">
+        <span class="project-tag">Jenkins</span>
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">CI/CD</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>Kubernetes Deployment</h3>
+      <p>Containerized applications using Docker and deployed them on Kubernetes clusters using Helm charts for scalable, manageable application delivery.</p>
+      <div class="project-tags">
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">Kubernetes</span>
+        <span class="project-tag">Helm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--bg2);max-width:100%;padding:5rem 2rem;">
+  <div class="inner">
+    <div class="section-eyebrow">Professional journey</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3>DevOps / Cloud Engineer — ServisFirst Bank</h3>
+          <div class="exp-meta">Sep 2025 – Present<br>Alabama, USA</div>
+        </div>
+        <ul>
+          <li>Manage cloud infrastructure on AWS using Terraform and Infrastructure as Code practices.</li>
+          <li>Build and maintain CI/CD pipelines using Jenkins and GitHub Actions.</li>
+          <li>Deploy and monitor containerized applications on Kubernetes clusters.</li>
+          <li>Collaborate with development teams to automate deployment processes.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3>Associate Consultant (DevOps Engineer) — Capgemini</h3>
+          <div class="exp-meta">2021 – 2025<br>India</div>
+        </div>
+        <ul>
+          <li>Implemented CI/CD pipelines to streamline application delivery across teams.</li>
+          <li>Provisioned cloud resources using Terraform and AWS services.</li>
+          <li>Containerized applications using Docker and deployed them to Kubernetes.</li>
+          <li>Improved deployment efficiency and significantly reduced manual intervention.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <h3>Software Developer / QA Analyst — Canara HSBC OBC</h3>
+          <div class="exp-meta">2019 – 2021<br>India</div>
+        </div>
+        <ul>
+          <li>Developed and executed automated test cases using Selenium.</li>
+          <li>Performed functional and regression testing for banking applications.</li>
+          <li>Collaborated with developers to resolve software defects and improve release quality.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-eyebrow">Academic background</div>
+  <h2 class="section-title">Education & Certifications</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3>Master of Science — Management Information Systems</h3>
+      <p>Auburn University at Montgomery (AUM), USA<br>Montgomery, Alabama</p>
+      <span class="year">2025</span>
+    </div>
+    <div class="edu-card">
+      <h3>Bachelor of Technology — Electronics & Communication Engineering</h3>
+      <p>Jawaharlal Nehru Technological University, Hyderabad, India</p>
+      <span class="year">2019</span>
+    </div>
+    <div class="edu-card">
+      <h3>Certifications</h3>
+      <p style="margin-bottom:0.5rem;">
+        <a href="https://www.coursera.org/account/accomplishments/verify/FV3A7QOU4Q34"
+           target="_blank" style="color:var(--accent);text-decoration:none;">
+          Google Data Analytics Capstone ↗
+        </a>
+      </p>
+      <p>
+        <a href="https://www.udemy.com/certificate/UC-49dbe9e4-28e2-43e4-8c2f-6331273efcb2/"
+           target="_blank" style="color:var(--accent);text-decoration:none;">
+          Selenium WebDriver with Java & TestNG ↗
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Get in touch</div>
+  <h2 class="section-title">Let's Connect</h2>
+  <p>If you're looking for a Cloud & DevOps Engineer experienced in AWS, Kubernetes, CI/CD, and Infrastructure as Code, feel free to reach out.</p>
+  <div class="contact-btns">
+    <a href="mailto:jhansilaxmi.se@gmail.com" class="btn-primary">Email Me</a>
+    <a href="https://www.linkedin.com/in/jhansi-laxmi-80536528a/" class="btn-ghost" target="_blank">LinkedIn</a>
+    <a href="Jhansi_Resume.pdf" class="btn-ghost" download>Download Resume</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-<p>© 2026 Jhansi Laxmi Mareedu. All Rights Reserved.</p>
+  © 2026 Jhansi Laxmi Mareedu · Built with HTML/CSS
 </footer>
+
 </body>
 </html>
